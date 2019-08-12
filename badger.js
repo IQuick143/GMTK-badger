@@ -21,6 +21,11 @@ const ratingBarWidth = 174;
 const ratingBarHeight = 40;
 const ratingBars = [157, 207, 257, 307];
 
+const dataX = 323;
+const scoreYoff = 13;
+const positionYoff = 25;
+const percentileYoff = 35;
+
 var canvas;
 var inputField;
 var nameField;
@@ -47,14 +52,23 @@ function clearCanvas() {
 function makeBadge(gameID) {
 	var ratings = getRatings(gameID);
 	for (var i = 0; i < numBars; i++) {
-		canvas.drawImage(gradientImg, ratingBarStart, ratingBars[i], ratingBarWidth * ratings[i], ratingBarHeight);
+		canvas.drawImage(gradientImg, ratingBarStart, ratingBars[i], ratingBarWidth * ratings[i].scoreNorm, ratingBarHeight);
 	}
 	canvas.drawImage(templateImg, 0, 0);
 	canvas.drawImage(iconImg, iconX, iconY, iconW, iconH);
 
-	canvas.font = "16px Arial";
+	canvas.font = "13px Arial";
 	canvas.fillStyle = "#FFFFFF";
 	canvas.fillText(getGameURL(gameID), 4, 363);
+
+	for (var i = 0; i < numBars; i++) {
+		canvas.font = "22px Helvetica, sans";
+		canvas.fillText(ratings[i].score, dataX, ratingBars[i] + scoreYoff);
+		canvas.font = "14px Helvetica, sans";
+		canvas.fillText(ratings[i].position, dataX, ratingBars[i] + positionYoff);
+		canvas.font = "11px Helvetica, sans";
+		canvas.fillText(ratings[i].percentile, dataX, ratingBars[i] + percentileYoff);
+	}
 }
 
 function LoadGame() {
