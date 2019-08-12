@@ -7,6 +7,9 @@ const gradientImageID = "gradient";
 const iconImageID = "iconLoader";
 
 //Image layout
+const height = 367;
+const width = 455;
+
 const iconX = 44;
 const iconY = 8;
 const iconW = 137;
@@ -32,6 +35,13 @@ function loadBadger() {
 	inputField  = document.getElementById(inputFieldID);
 	nameField   = document.getElementById(nameFieldID);
 	iconImg     = document.getElementById(iconImageID);
+
+	clearCanvas();
+}
+
+function clearCanvas() {
+	canvas.fillStyle = "#000318";
+	canvas.fillRect(0, 0, width, height);
 }
 
 function makeBadge(gameID) {
