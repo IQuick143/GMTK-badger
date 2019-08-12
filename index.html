@@ -6,21 +6,53 @@
 			.hidden {
 				display: none;
 			}
+			h1{
+				color: white;
+				font-size: 3em
+			}
+			main{
+				background: white;
+				border-radius: .5em;
+				max-width: 45em;
+				margin: auto;
+				box-shadow: 0 .5em 1em -.2em black;
+				padding: 1em
+			}
+			body{
+				font-family: helvetica, sans;
+				text-align: center;
+				background: url('back.png')
+			}
+			canvas{
+				margin: 1em;
+				box-shadow: 0 .5em 1em -.2em black;
+			}
+			footer{
+				margin: 1em;
+				color: white
+			}
+			footer a{
+				color: white
+			}
 		</style>
 	</head>
 	<body onload="document.getElementById('LoadingNotice').style.display = 'none';loadBadger();">
-		<div id="LoadingNotice"><p>PAGE MIGHT TAKE A WHILE TO LOAD PLEASE BE PATIENT</p></div>
-		<script src="results.js"></script>
-		<script src="gameSearcher.js"></script>
-		<script src="badger.js"></script>
-		<div>
-			<label>Game ID: </label><input id="inputField" type="number" placeholder="Game ID" onchange="LoadGame();"/>
-			<label>Game name: </label><input id="nameField" type="text" placeholder="Game Name" disabled="true"/>
-			<br/>
-		</div>
-		<canvas id="badge" width=455 height=367></canvas>
-		<img class="hidden" id="iconLoader"/>
-		<img src="template.png" class="hidden" id="template"/>
-		<img src="gradient.png" class="hidden" id="gradient"/>
+		<h1>Super GMTK-Jam badge maker</h1>
+		<main>
+			<div id="LoadingNotice"><p>PAGE MIGHT TAKE A WHILE TO LOAD PLEASE BE PATIENT</p></div>
+			<script src="results.js"></script>
+			<script src="gameSearcher.js"></script>
+			<script src="badger.js"></script>
+			<div>
+				<label>Game ID: </label><input id="inputField" type="number" placeholder="Game ID" onchange="LoadGame();"/>
+				<label>Game name: </label><input id="nameField" type="text" placeholder="Game Name" disabled="true"/>
+				<br/>
+			</div>
+			<canvas id="badge" width=455 height=367></canvas>
+			<img class="hidden" id="iconLoader"/>
+			<img src="template.png" class="hidden" id="template"/>
+			<img src="gradient.png" class="hidden" id="gradient"/>
+		</main>
+		<footer>Code <a href="https://github.com/IQuick143">IQuick</a> - Visuals and design <a href="https://twitter.com/timkrief">@timkrief</a></footer>
 	</body>
 </html>
