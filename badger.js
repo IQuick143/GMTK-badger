@@ -58,7 +58,8 @@ function makeBadge(gameID) {
 }
 
 function LoadGame() {
-	var gameID = ""+inputField.value;
+	var gameID = /\d{6}/.exec(inputField.value)[0];
+	if (gameID != undefined) inputField.value = gameID;
 	if (doesGameExist(gameID)) {
 		nameField.value = getGameName(gameID);
 		loadIcon(gameID);
