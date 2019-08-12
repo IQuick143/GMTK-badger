@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Super GMTK-Jam badge maker</title>
+		<style>
+			.hidden {
+				display: none;
+			}
+		</style>
+	</head>
+	<body onload="document.getElementById('LoadingNotice').style.display = 'none';loadBadger();">
+		<div id="LoadingNotice"><p>PAGE MIGHT TAKE A WHILE TO LOAD PLEASE BE PATIENT</p></div>
+		<script src="results.js"></script>
+		<script src="gameSearcher.js"></script>
+		<script src="badger.js"></script>
+		<div>
+			<label>Game ID: </label><input id="inputField" type="number" placeholder="Game ID" onchange="LoadGame();"/>
+			<label>Game name: </label><input id="nameField" type="text" placeholder="Game Name" disabled="true"/>
+			<br/>
+		</div>
+		<canvas id="badge" width=455 height=367></canvas>
+		<img class="hidden" id="iconLoader"/>
+		<img src="template.png" class="hidden" id="template"/>
+		<img src="gradient.png" class="hidden" id="gradient"/>
+	</body>
+</html>
