@@ -33,6 +33,10 @@ function getImageURL(gameID) {
 	return gameData.games[gameID].cover_url;
 }
 
+function getGameURL(gameID) {
+	return gameData.games[gameID].url;
+}
+
 function getGameName(gameID) {
 	return gameData.games[gameID].title;
 }
