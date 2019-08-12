@@ -7,6 +7,7 @@ const gradientImageID = "gradient";
 const iconImageID = "iconLoader";
 const statCheckboxID = "includeStat";
 const linkCheckboxID = "includeLink";
+const nameCheckboxID = "includeName";
 
 //Image layout
 const height = 367;
@@ -16,6 +17,9 @@ const iconX = 44;
 const iconY = 8;
 const iconW = 137;
 const iconH = 108;
+
+const gameNameX = iconX + iconW / 2;
+const gameNameY = iconY + iconH + 16;
 
 const numBars = 4;
 const ratingBarStart = 141;
@@ -36,11 +40,13 @@ var gradientImg;
 var iconImg;
 var statCheckbox;
 var linkCheckbox;
+var nameCheckbox;
 
 function loadBadger() {
 	canvas = document.getElementById(canvasID).getContext("2d");
 	statCheckbox= document.getElementById(statCheckboxID);
 	linkCheckbox= document.getElementById(linkCheckboxID);
+	nameCheckbox= document.getElementById(nameCheckboxID);
 	templateImg = document.getElementById(templateImageID);
 	gradientImg = document.getElementById(gradientImageID);
 	inputField  = document.getElementById(inputFieldID);
@@ -62,6 +68,15 @@ function makeBadge(gameID) {
 	}
 	canvas.drawImage(templateImg, 0, 0);
 	canvas.drawImage(iconImg, iconX, iconY, iconW, iconH);
+	
+	if (nameCheckbox.checked) {
+		var originalAlign = canvas.textAlign;
+		canvas.font = "17px Arial";
+		canvas.fillStyle = "#000000";
+		canvas.textAlign = "center";
+		canvas.fillText(getGameName(gameID), gameNameX, gameNameY);
+		canvas.textAlign = originalAlign;
+	}
 
 	if (linkCheckbox.checked) {
 		canvas.font = "13px Arial";
