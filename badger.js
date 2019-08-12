@@ -5,6 +5,8 @@ const nameFieldID = "nameField";
 const templateImageID = "template";
 const gradientImageID = "gradient";
 const iconImageID = "iconLoader";
+const statCheckboxID = "includeStat";
+const linkCheckboxID = "includeLink";
 
 //Image layout
 const height = 367;
@@ -32,9 +34,13 @@ var nameField;
 var templateImg;
 var gradientImg;
 var iconImg;
+var statCheckbox;
+var linkCheckbox;
 
 function loadBadger() {
 	canvas = document.getElementById(canvasID).getContext("2d");
+	statCheckbox= document.getElementById(statCheckboxID);
+	linkCheckbox= document.getElementById(linkCheckboxID);
 	templateImg = document.getElementById(templateImageID);
 	gradientImg = document.getElementById(gradientImageID);
 	inputField  = document.getElementById(inputFieldID);
@@ -57,17 +63,21 @@ function makeBadge(gameID) {
 	canvas.drawImage(templateImg, 0, 0);
 	canvas.drawImage(iconImg, iconX, iconY, iconW, iconH);
 
-	canvas.font = "13px Arial";
-	canvas.fillStyle = "#FFFFFF";
-	canvas.fillText(getGameURL(gameID), 4, 363);
-
-	for (var i = 0; i < numBars; i++) {
-		canvas.font = "22px Helvetica, sans";
-		canvas.fillText(ratings[i].score, dataX, ratingBars[i] + scoreYoff);
-		canvas.font = "14px Helvetica, sans";
-		canvas.fillText(ratings[i].position, dataX, ratingBars[i] + positionYoff);
-		canvas.font = "11px Helvetica, sans";
-		canvas.fillText(ratings[i].percentile, dataX, ratingBars[i] + percentileYoff);
+	if (linkCheckbox.checked) {
+		canvas.font = "13px Arial";
+		canvas.fillStyle = "#FFFFFF";
+		canvas.fillText(getGameURL(gameID), 4, 363);
+	}
+	if (statCheckbox.checked) {
+		canvas.fillStyle = "#FFFFFF";
+		for (var i = 0; i < numBars; i++) {
+			canvas.font = "22px Helvetica, sans";
+			canvas.fillText(ratings[i].score, dataX, ratingBars[i] + scoreYoff);
+			canvas.font = "14px Helvetica, sans";
+			canvas.fillText(ratings[i].position, dataX, ratingBars[i] + positionYoff);
+			canvas.font = "11px Helvetica, sans";
+			canvas.fillText(ratings[i].percentile, dataX, ratingBars[i] + percentileYoff);
+		}
 	}
 }
 
@@ -83,6 +93,7 @@ function LoadGame() {
 }
 
 function loadIcon(gameID) {
+	clearCanvas();
 	iconImg.onload = ()=>loadIconCallback(gameID);
 	iconImg.src = getImageURL(gameID);
 }
