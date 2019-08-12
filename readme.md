@@ -3,3 +3,6 @@
 Type your game ID and press enter!
 
 Data taken from: https://itch.io/jam/10205/results.json
+
+Code by [IQuick](https://github.com/IQuick143)
+Visuals and design by [@timkrief](https://twitter.com/timkrief)

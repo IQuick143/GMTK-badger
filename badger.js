@@ -51,10 +51,6 @@ function makeBadge(gameID) {
 	}
 	canvas.drawImage(templateImg, 0, 0);
 	canvas.drawImage(iconImg, iconX, iconY, iconW, iconH);
-
-	canvas.font = "16px Arial";
-	canvas.fillStyle = "#FFFFFF";
-	canvas.fillText(getGameURL(gameID), 4, 363);
 }
 
 function LoadGame() {
