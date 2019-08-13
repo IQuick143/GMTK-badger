@@ -75,7 +75,10 @@ function makeBadge(gameID) {
 		canvas.font = "17px Arial";
 		canvas.fillStyle = "#000000";
 		canvas.textAlign = "center";
-		canvas.fillText(getGameName(gameID), gameNameX, gameNameY);
+		var gameName = getGameName(gameID);
+		var textwidth = canvas.measureText(gameName).width;
+		var xpos = Math.max(textwidth/2 + 5, gameNameX);
+		canvas.fillText(gameName, xpos, gameNameY);
 		canvas.textAlign = originalAlign;
 	}
 
