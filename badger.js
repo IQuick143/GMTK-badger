@@ -98,7 +98,11 @@ function makeBadge(gameID) {
 }
 
 function LoadGame() {
-	var gameID = /\d{6}/.exec(inputField.value)[0];
+	try {
+		var gameID = /\d{6}/.exec(inputField.value)[0];
+	} catch(e) {
+		var gameID = undefined;
+	}
 	if (gameID != undefined) inputField.value = gameID;
 	if (doesGameExist(gameID)) {
 		nameField.value = getGameName(gameID);
@@ -109,10 +113,11 @@ function LoadGame() {
 }
 
 function loadIcon(gameID) {
-	iconImg.onload = ()=>loadIconCallback(gameID);
-	iconImg.src = getImageURL(gameID);
-}
-
-function loadIconCallback(gameID) {
-	makeBadge(gameID);
+	url = getImageURL(gameID)
+    if (iconImg.src == url && iconImg.complete) {
+        makeBadge(gameID);
+    } else {
+        iconImg.onload = ()=>makeBadge(gameID);
+        iconImg.src = url;
+    }
 }
