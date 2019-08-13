@@ -62,6 +62,7 @@ function clearCanvas() {
 }
 
 function makeBadge(gameID) {
+	clearCanvas();
 	var ratings = getRatings(gameID);
 	for (var i = 0; i < numBars; i++) {
 		canvas.drawImage(gradientImg, ratingBarStart, ratingBars[i], ratingBarWidth * ratings[i].scoreNorm, ratingBarHeight);
@@ -108,7 +109,6 @@ function LoadGame() {
 }
 
 function loadIcon(gameID) {
-	clearCanvas();
 	iconImg.onload = ()=>loadIconCallback(gameID);
 	iconImg.src = getImageURL(gameID);
 }
