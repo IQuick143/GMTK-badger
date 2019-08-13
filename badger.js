@@ -110,6 +110,7 @@ function LoadGame() {
 	} else {
 		nameField.value = "GAME NOT FOUND"
 	}
+	return false;
 }
 
 function loadIcon(gameID) {
