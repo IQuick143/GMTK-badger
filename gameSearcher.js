@@ -4,8 +4,11 @@ var ready = false;
 var gameData = undefined;
 
 function loadData() {
-	gameData = loadGameJamData();
-	ready = true;
+	ready = false;
+	loadGameJamData(function(result) {
+		gameData = result;
+		ready = true;
+	});
 }
 
 //TODO: an assistant system that allows searching by name
