@@ -1,4 +1,3 @@
-//HARDCODED IT IN BECAUSE OF STUPID XSS PROTECTIONS
 function loadGameJamData(callback) {
 	var xobj = new XMLHttpRequest();
 		xobj.overrideMimeType("application/json");
