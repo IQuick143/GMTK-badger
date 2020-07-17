@@ -5,7 +5,7 @@ var gameData = undefined;
 
 function loadData() {
 	ready = false;
-	loadGameJamData(function(result) {
+	loadGameJamData(2019, function(result) {
 		gameData = result;
 		ready = true;
 	});
