@@ -10,27 +10,29 @@ const linkCheckboxID = "includeLink";
 const nameCheckboxID = "includeName";
 
 //Image layout
-const height = 367;
-const width = 455;
+var design = {
+	height: 367,
+	width: 455,
 
-const iconX = 44;
-const iconY = 8;
-const iconW = 137;
-const iconH = 108;
+	iconX: 44,
+	iconY: 8,
+	iconW: 137,
+	iconH: 108,
 
-const gameNameX = iconX + iconW / 2;
-const gameNameY = iconY + iconH + 16;
+	gameNameX: 44 + 137 / 2,
+	gameNameY: 8 + 108 + 16,
 
-const numBars = 4;
-const ratingBarStart = 141;
-const ratingBarWidth = 174;
-const ratingBarHeight = 40;
-const ratingBars = [157, 207, 257, 307];
+	numBars: 4,
+	ratingBarStart: 141,
+	ratingBarWidth: 174,
+	ratingBarHeight: 40,
+	ratingBars: [157, 207, 257, 307],
 
-const dataX = 323;
-const scoreYoff = 13;
-const positionYoff = 25;
-const percentileYoff = 35;
+	dataX: 323,
+	scoreYoff: 13,
+	positionYoff: 25,
+	percentileYoff: 35
+};
 
 var canvas;
 var inputField;
@@ -56,19 +58,28 @@ function loadBadger() {
 	clearCanvas();
 }
 
+function changeYear() {
+	//Load design
+	//TODO
+	//Update assets
+	gradientImg.src = ""
+	
+	clearCanvas();
+}
+
 function clearCanvas() {
 	canvas.fillStyle = "#000318";
-	canvas.fillRect(0, 0, width, height);
+	canvas.fillRect(0, 0, design.width, design.height);
 }
 
 function makeBadge(gameID) {
 	clearCanvas();
-	var ratings = getRatings(gameID);
-	for (var i = 0; i < numBars; i++) {
-		canvas.drawImage(gradientImg, ratingBarStart, ratingBars[i], ratingBarWidth * ratings[i].scoreNorm, ratingBarHeight);
+	var ratings = getRatings(gameID, ["Design", "Originality", "Adherence to the Theme"]);
+	for (var i = 0; i < design.ratingBars.length; i++) {
+		canvas.drawImage(gradientImg, design.ratingBarStart, design.ratingBars[i], design.ratingBarWidth * ratings[i].scoreNorm, design.ratingBarHeight);
 	}
 	canvas.drawImage(templateImg, 0, 0);
-	canvas.drawImage(iconImg, iconX, iconY, iconW, iconH);
+	canvas.drawImage(iconImg, design.iconX, design.iconY, design.iconW, design.iconH);
 	
 	if (nameCheckbox.checked) {
 		var originalAlign = canvas.textAlign;
@@ -77,8 +88,8 @@ function makeBadge(gameID) {
 		canvas.textAlign = "center";
 		var gameName = getGameName(gameID);
 		var textwidth = canvas.measureText(gameName).width;
-		var xpos = Math.max(textwidth/2 + 5, gameNameX);
-		canvas.fillText(gameName, xpos, gameNameY);
+		var xpos = Math.max(textwidth/2 + 5, design.gameNameX);
+		canvas.fillText(gameName, xpos, design.gameNameY);
 		canvas.textAlign = originalAlign;
 	}
 
@@ -89,13 +100,13 @@ function makeBadge(gameID) {
 	}
 	if (statCheckbox.checked) {
 		canvas.fillStyle = "#FFFFFF";
-		for (var i = 0; i < numBars; i++) {
+		for (var i = 0; i < design.ratingBars.length; i++) {
 			canvas.font = "22px Helvetica, sans";
-			canvas.fillText(ratings[i].score, dataX, ratingBars[i] + scoreYoff);
+			canvas.fillText(ratings[i].score, design.dataX, design.ratingBars[i] + design.scoreYoff);
 			canvas.font = "14px Helvetica, sans";
-			canvas.fillText(ratings[i].position, dataX, ratingBars[i] + positionYoff);
+			canvas.fillText(ratings[i].position, design.dataX, design.ratingBars[i] + design.positionYoff);
 			canvas.font = "11px Helvetica, sans";
-			canvas.fillText(ratings[i].percentile, dataX, ratingBars[i] + percentileYoff);
+			canvas.fillText(ratings[i].percentile, design.dataX, design.ratingBars[i] + design.percentileYoff);
 		}
 	}
 }
