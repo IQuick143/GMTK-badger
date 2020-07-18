@@ -10,24 +10,24 @@ const linkCheckboxID = "includeLink";
 const nameCheckboxID = "includeName";
 
 //Image layout
-const height = 367;
-const width = 455;
+const height = 600;
+const width = 800;
 
-const iconX = 44;
-const iconY = 8;
-const iconW = 137;
-const iconH = 108;
+const iconX = 28;
+const iconY = 27;
+const iconW = 234;
+const iconH = 185;
 
 const gameNameX = iconX + iconW / 2;
 const gameNameY = iconY + iconH + 16;
 
 const numBars = 4;
-const ratingBarStart = 141;
-const ratingBarWidth = 174;
-const ratingBarHeight = 40;
-const ratingBars = [157, 207, 257, 307];
+const ratingBarStart = 258;
+const ratingBarWidth = 284;
+const ratingBarHeight = 73;
+const ratingBars = [223, 307, 392, 476];
 
-const dataX = 323;
+const dataX = 650;
 const scoreYoff = 13;
 const positionYoff = 25;
 const percentileYoff = 35;
@@ -57,7 +57,7 @@ function loadBadger() {
 }
 
 function clearCanvas() {
-	canvas.fillStyle = "#000318";
+	canvas.fillStyle = "#220011";
 	canvas.fillRect(0, 0, width, height);
 }
 
