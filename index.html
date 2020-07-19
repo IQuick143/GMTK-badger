@@ -40,9 +40,11 @@
 		<h1>Super GMTK-Jam badge maker</h1>
 		<main>
 			<div id="LoadingNotice"><p>PAGE MIGHT TAKE A WHILE TO LOAD PLEASE BE PATIENT</p></div>
+			<script src="utils.js"></script>
 			<script src="results.js"></script>
 			<script src="gameSearcher.js"></script>
 			<script src="badger.js"></script>
+			<div id="LoadingNotice2"><p>Loading Data for the selected year</p></div>
 			<form onsubmit="LoadGame();" action="javascript:void(0);">
 				<label>Rating URL: </label><input id="inputField" type="text" placeholder="Game ID"/>
 				<label>Game name: </label><input id="nameField" type="text" placeholder="Game Name" disabled="true"/>
@@ -54,8 +56,8 @@
 			</form>
 			<canvas id="badge" width=455 height=367></canvas>
 			<img class="hidden" id="iconLoader"/>
-			<img src="template.png" class="hidden" id="template"/>
-			<img src="gradient.png" class="hidden" id="gradient"/>
+			<img src="assets/2019/template.png" class="hidden" id="template"/>
+			<img src="assets/2019/gradient.png" class="hidden" id="gradient"/>
 		</main>
 		<footer>Code <a href="https://github.com/IQuick143">IQuick</a> - Visuals and design <a href="https://twitter.com/timkrief">@timkrief</a></footer>
 	</body>

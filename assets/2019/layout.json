@@ -1,0 +1,23 @@
+{
+	"height": 367,
+	"width": 455,
+
+	"iconX": 44,
+	"iconY": 8,
+	"iconW": 137,
+	"iconH": 108,
+
+	"gameNameX": 113,
+	"gameNameY": 132,
+
+	"numBars": 4,
+	"ratingBarStart": 141,
+	"ratingBarWidth": 174,
+	"ratingBarHeight": 40,
+	"ratingBars": [157, 207, 257, 307],
+
+	"dataX": 323,
+	"scoreYoff": 13,
+	"positionYoff": 25,
+	"percentileYoff": 35
+}

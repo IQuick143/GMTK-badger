@@ -8,8 +8,12 @@ const iconImageID = "iconLoader";
 const statCheckboxID = "includeStat";
 const linkCheckboxID = "includeLink";
 const nameCheckboxID = "includeName";
+const LoadingNotice2 = "LoadingNotice2";
 
 //Image layout
+//*
+var design = {};
+/*/
 var design = {
 	height: 367,
 	width: 455,
@@ -33,6 +37,7 @@ var design = {
 	positionYoff: 25,
 	percentileYoff: 35
 };
+//*/
 
 var canvas;
 var inputField;
@@ -43,6 +48,7 @@ var iconImg;
 var statCheckbox;
 var linkCheckbox;
 var nameCheckbox;
+var loadMsg;
 
 function loadBadger() {
 	canvas = document.getElementById(canvasID).getContext("2d");
@@ -54,17 +60,25 @@ function loadBadger() {
 	inputField  = document.getElementById(inputFieldID);
 	nameField   = document.getElementById(nameFieldID);
 	iconImg     = document.getElementById(iconImageID);
+	loadMsg     = document.getElementById(LoadingNotice2);
 
-	clearCanvas();
+	loadYearlyData(2019);
 }
 
-function changeYear() {
+function loadYearlyData(year) {
+	loadMsg.classList.remove("hidden");
+	promises = [];
 	//Load design
-	//TODO
+	promises.push(loadJSON("assets/"+year+"/layout.json"));
 	//Update assets
-	gradientImg.src = ""
+	promises.push(loadImage(gradientImg, "assets/"+year+"/gradient.png"));
+	promises.push(loadImage(templateImg, "assets/"+year+"/template.png"));
 	
-	clearCanvas();
+	Promise.all(promises).then(function(responses) {
+		design = responses[0];
+		loadMsg.classList.add("hidden");
+		clearCanvas();
+	});
 }
 
 function clearCanvas() {
@@ -120,19 +134,9 @@ function LoadGame() {
 	if (gameID != undefined) inputField.value = gameID;
 	if (doesGameExist(gameID)) {
 		nameField.value = getGameName(gameID);
-		loadIcon(gameID);
+		loadImage(iconImg, getImageURL(gameID)).then(()=>makeBadge(gameID));
 	} else {
 		nameField.value = "GAME NOT FOUND"
 	}
 	return false;
-}
-
-function loadIcon(gameID) {
-	url = getImageURL(gameID)
-    if (iconImg.src == url && iconImg.complete) {
-        makeBadge(gameID);
-    } else {
-        iconImg.onload = ()=>makeBadge(gameID);
-        iconImg.src = url;
-    }
 }
