@@ -86,7 +86,7 @@ function loadYearlyData(year) {
 }
 
 function clearCanvas() {
-	canvas.fillStyle = "#000318";
+	canvas.fillStyle = design.backgroundColour || "#000000";
 	canvas.fillRect(0, 0, design.width, design.height);
 }
 
