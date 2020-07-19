@@ -114,33 +114,33 @@ function makeBadge(gameID) {
 		canvas.drawImage(gradientImg, design.ratingBarStart, design.ratingBars[i], design.ratingBarWidth * ratings[i].scoreNorm, design.ratingBarHeight);
 	}
 	canvas.drawImage(templateImg, 0, 0);
-	canvas.drawImage(iconImg, design.iconX, design.iconY, design.iconW, design.iconH);
+	canvas.drawImage(iconImg, design.icon.x, design.icon.y, design.icon.w, design.icon.h);
 	
 	if (nameCheckbox.checked) {
 		var originalAlign = canvas.textAlign;
-		canvas.font = "17px Arial";
-		canvas.fillStyle = "#000000";
-		canvas.textAlign = "center";
+		canvas.font = design.gameName.font;
+		canvas.fillStyle = design.gameName.colour;
+		canvas.textAlign = design.gameName.align;
 		var gameName = getGameName(gameID);
 		var textwidth = canvas.measureText(gameName).width;
-		var xpos = Math.max(textwidth/2 + 5, design.gameNameX);
-		canvas.fillText(gameName, xpos, design.gameNameY);
+		var xpos = Math.max(textwidth/2 + 5, design.gameName.x);
+		canvas.fillText(gameName, xpos, design.gameName.y);
 		canvas.textAlign = originalAlign;
 	}
 
 	if (linkCheckbox.checked) {
-		canvas.font = "13px Arial";
-		canvas.fillStyle = "#FFFFFF";
-		canvas.fillText(getGameURL(gameID), 4, 363);
+		canvas.font = design.link.font;
+		canvas.fillStyle = design.link.colour;
+		canvas.fillText(getGameURL(gameID), design.link.x, design.link.y);
 	}
 	if (statCheckbox.checked) {
-		canvas.fillStyle = "#FFFFFF";
+		canvas.fillStyle = design.statcolour;
 		for (var i = 0; i < design.ratingBars.length; i++) {
-			canvas.font = "22px Helvetica, sans";
+			canvas.font = design.scoreFont;
 			canvas.fillText(ratings[i].score, design.dataX, design.ratingBars[i] + design.scoreYoff);
-			canvas.font = "14px Helvetica, sans";
+			canvas.font = design.positionFont;
 			canvas.fillText(ratings[i].position, design.dataX, design.ratingBars[i] + design.positionYoff);
-			canvas.font = "11px Helvetica, sans";
+			canvas.font = design.percentileFont;
 			canvas.fillText(ratings[i].percentile, design.dataX, design.ratingBars[i] + design.percentileYoff);
 		}
 	}

@@ -4,13 +4,20 @@
 	"width": 455,
 	"backgroundColour": "#000318",
 
-	"iconX": 44,
-	"iconY": 8,
-	"iconW": 137,
-	"iconH": 108,
+	"icon": {
+		"x": 44,
+		"y": 8,
+		"w": 137,
+		"h": 108
+	},
 
-	"gameNameX": 113,
-	"gameNameY": 132,
+	"gameName": {
+		"x": 113,
+		"y": 132,
+		"font": "17px Arial",
+		"align": "center",
+		"colour": "#000000"
+	},
 
 	"numBars": 4,
 	"ratingBarStart": 141,
@@ -19,7 +26,18 @@
 	"ratingBars": [157, 207, 257, 307],
 
 	"dataX": 323,
+	"statcolour": "#FFFFFF",
 	"scoreYoff": 13,
+	"scoreFont": "22px Helvetica, sans",
 	"positionYoff": 25,
-	"percentileYoff": 35
+	"positionFont": "14px Helvetica, sans",
+	"percentileYoff": 35,
+	"percentileFont": "11px Helvetica, sans",
+
+	"link": {
+		"x": 4,
+		"y": 363,
+		"font": "13px Arial",
+		"colour": "#FFFFFF"
+	}
 }
