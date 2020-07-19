@@ -83,20 +83,20 @@ function updateYear() {
 function loadYearlyData(year) {
 	promises = [];
 	//Load design if needed
-	if (design === undefined || design.year != year) promises.push(loadJSON("assets/"+year+"/layout.json").then(function(response) {
+	if (design === undefined || design.year != year) promises.push(loadJSON("./assets/"+year+"/layout.json").then(function(response) {
 		design = response;
 		return response;
 	}));
 	//Update assets
-	if (!gradientImg.src.includes(year)) promises.push(loadImage(gradientImg, "assets/"+year+"/gradient.png"));
-	if (!templateImg.src.includes(year)) promises.push(loadImage(templateImg, "assets/"+year+"/template.png"));
+	if (!gradientImg.src.includes(year)) promises.push(loadImage(gradientImg, "./assets/"+year+"/gradient.png"));
+	if (!templateImg.src.includes(year)) promises.push(loadImage(templateImg, "./assets/"+year+"/template.png"));
 	
 	return Promise.all(promises);
 }
 
 //Update the visuals on the HTML
 function updateHTMLYear(year) {
-	document.body.style.backgroundImage = "url('/assets/"+year+"/back.png')";
+	document.body.style.backgroundImage = "url('./assets/"+year+"/back.png')";
 }
 
 //Prepares the canvas to be used

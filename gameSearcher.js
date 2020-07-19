@@ -55,7 +55,7 @@ function loadGameJamData(year, callback) {
 		throw "Invalid GMTK Jam indentifier, provide year of the jam.";
 	}
 	if (year == loadedYear && data != undefined) callback(data);
-	loadJSON('results/'+year+'.json').then(function(raw) {
+	loadJSON('./results/'+year+'.json').then(function(raw) {
 		var gameData = {};
 		var names = [];
 		var length = 0;
