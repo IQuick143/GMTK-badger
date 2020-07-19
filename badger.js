@@ -101,9 +101,9 @@ function updateHTMLYear(year) {
 
 //Prepares the canvas to be used
 function clearCanvas() {
-	canvas.fillStyle = design.backgroundColour || "#000000";
 	canvas.canvas.width  = design.width;
 	canvas.canvas.height = design.height;
+	canvas.fillStyle = design.backgroundColour || "#000000";
 	canvas.fillRect(0, 0, design.width, design.height);
 }
 
