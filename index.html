@@ -21,7 +21,7 @@
 			body{
 				font-family: helvetica, sans;
 				text-align: center;
-				background: url('assets/2019/back.png')
+				background: url('assets/2020/back.png')
 			}
 			canvas{
 				margin: 1em;
@@ -45,6 +45,11 @@
 			<script src="badger.js"></script>
 			<div id="LoadingNotice2"><p>Loading Data for the selected year</p></div>
 			<form onsubmit="LoadGame();" action="javascript:void(0);">
+				<label>Jam Year:</label><select id="yearField" onchange="updateYear();">
+					<option value="2020">2020</option>
+					<option value="2019">2019</option>
+				</select>
+				<br/>
 				<label>Rating URL: </label><input id="inputField" type="text" placeholder="Game ID"/>
 				<label>Game name: </label><input id="nameField" type="text" placeholder="Game Name" disabled="true"/>
 				<br/>

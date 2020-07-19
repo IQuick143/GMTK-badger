@@ -1,5 +1,6 @@
 //IDs used by this script
 const canvasID = "badge";
+const yearFieldID = "yearField";
 const inputFieldID = "inputField";
 const nameFieldID = "nameField";
 const templateImageID = "template";
@@ -40,6 +41,7 @@ var design = {
 //*/
 
 var canvas;
+var yearField;
 var inputField;
 var nameField;
 var templateImg;
@@ -61,9 +63,15 @@ function loadBadger() {
 	gradientImg = document.getElementById(gradientImageID);
 	inputField  = document.getElementById(inputFieldID);
 	nameField   = document.getElementById(nameFieldID);
+	yearField   = document.getElementById(yearFieldID);
 	iconImg     = document.getElementById(iconImageID);
 	loadMsg     = document.getElementById(LoadingNotice2);
 	
+	updateYear();
+}
+
+function updateYear() {
+	yearOfJam = yearField.value;
 	loadMsg.classList.remove("hidden");
 	loadYearlyData(yearOfJam).then(function() {
 		loadMsg.classList.add("hidden");
