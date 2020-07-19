@@ -79,8 +79,8 @@ function loadYearlyData(year) {
 		return response;
 	}));
 	//Update assets
-	promises.push(loadImage(gradientImg, "assets/"+year+"/gradient.png"));
-	promises.push(loadImage(templateImg, "assets/"+year+"/template.png"));
+	if (!gradientImg.src.includes(year)) promises.push(loadImage(gradientImg, "assets/"+year+"/gradient.png"));
+	if (!templateImg.src.includes(year)) promises.push(loadImage(templateImg, "assets/"+year+"/template.png"));
 	
 	return Promise.all(promises);
 }
