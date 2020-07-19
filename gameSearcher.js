@@ -47,4 +47,28 @@ function getGameName(gameID) {
 	return gameData.games[gameID].title;
 }
 
+var loadedYear = NaN;
+var data = undefined;
+
+function loadGameJamData(year, callback) {
+	//Prevent someone being a dum dum and trying to load completely invalid data
+	if (!/\d+/.exec(""+year)) {
+		throw "Invalid GMTK Jam indentifier, provide year of the jam.";
+	}
+	if (year == loadedYear && data != undefined) callback(data);
+	loadJSON('results/'+year+'.json').then(function(raw) {
+		var gameData = {};
+		var names = [];
+		var length = 0;
+		for (var game of raw.results) {
+			gameData[game.id] = game;
+			names.push({"name": game.title, "id": game.id});
+			length++;
+		}
+		data = {"games": gameData, "names":names, "length": length};
+		loadedYear = year
+		callback(data);
+	});
+}
+
 loadData();

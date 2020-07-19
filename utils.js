@@ -1,6 +1,7 @@
 function loadImage(elementHandle, imagePath) {
 	return new Promise(function(resolve, reject) {
 		if (elementHandle.src == imagePath && elementHandle.complete) {
+			console.log("Cache hit")
 			resolve();
 		} else {
 			elementHandle.onload = resolve;

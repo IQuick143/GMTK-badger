@@ -50,6 +50,8 @@ var linkCheckbox;
 var nameCheckbox;
 var loadMsg;
 
+var yearOfJam = 2019;
+
 function loadBadger() {
 	canvas = document.getElementById(canvasID).getContext("2d");
 	statCheckbox= document.getElementById(statCheckboxID);
@@ -61,24 +63,26 @@ function loadBadger() {
 	nameField   = document.getElementById(nameFieldID);
 	iconImg     = document.getElementById(iconImageID);
 	loadMsg     = document.getElementById(LoadingNotice2);
-
-	loadYearlyData(2019);
+	
+	loadMsg.classList.remove("hidden");
+	loadYearlyData(yearOfJam).then(function() {
+		loadMsg.classList.add("hidden");
+		clearCanvas();
+	});
 }
 
 function loadYearlyData(year) {
-	loadMsg.classList.remove("hidden");
 	promises = [];
-	//Load design
-	promises.push(loadJSON("assets/"+year+"/layout.json"));
+	//Load design if needed
+	if (design === undefined || design.year != year) promises.push(loadJSON("assets/"+year+"/layout.json").then(function(response) {
+		design = response;
+		return response;
+	}));
 	//Update assets
 	promises.push(loadImage(gradientImg, "assets/"+year+"/gradient.png"));
 	promises.push(loadImage(templateImg, "assets/"+year+"/template.png"));
 	
-	Promise.all(promises).then(function(responses) {
-		design = responses[0];
-		loadMsg.classList.add("hidden");
-		clearCanvas();
-	});
+	return Promise.all(promises);
 }
 
 function clearCanvas() {
@@ -134,7 +138,10 @@ function LoadGame() {
 	if (gameID != undefined) inputField.value = gameID;
 	if (doesGameExist(gameID)) {
 		nameField.value = getGameName(gameID);
-		loadImage(iconImg, getImageURL(gameID)).then(()=>makeBadge(gameID));
+		Promise.all([
+			loadYearlyData(yearOfJam),
+			loadImage(iconImg, getImageURL(gameID))
+		]).then(()=>makeBadge(gameID)).catch((reason)=>alert("An error occured during processing your badge:\n"+reason+"\nPlease try again."));
 	} else {
 		nameField.value = "GAME NOT FOUND"
 	}
