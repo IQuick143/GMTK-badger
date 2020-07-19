@@ -69,6 +69,7 @@ function loadBadger() {
 		loadMsg.classList.add("hidden");
 		clearCanvas();
 	});
+	updateHTMLYear(yearOfJam);
 }
 
 function loadYearlyData(year) {
@@ -85,8 +86,16 @@ function loadYearlyData(year) {
 	return Promise.all(promises);
 }
 
+//Update the visuals on the HTML
+function updateHTMLYear(year) {
+	document.body.style.backgroundImage = "url('/assets/"+year+"/back.png')";
+}
+
+//Prepares the canvas to be used
 function clearCanvas() {
 	canvas.fillStyle = design.backgroundColour || "#000000";
+	canvas.canvas.width  = design.width;
+	canvas.canvas.height = design.height;
 	canvas.fillRect(0, 0, design.width, design.height);
 }
 
