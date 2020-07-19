@@ -1,0 +1,43 @@
+{
+	"year": 2020,
+	"height": 600,
+	"width": 800,
+	"backgroundColour": "#220011",
+
+	"icon": {
+		"x": 29,
+		"y": 25,
+		"w": 233,
+		"h": 184
+	},
+
+	"gameName": {
+		"x": 276,
+		"y": 90,
+		"font": "37px Arial",
+		"align": "left",
+		"colour": "#FFFFFF"
+	},
+
+	"numBars": 4,
+	"ratingBarStart": 258,
+	"ratingBarWidth": 285,
+	"ratingBarHeight": 74,
+	"ratingBars": [222, 306, 391, 475],
+
+	"dataX": 569,
+	"statcolour": "#FFFFFF",
+	"scoreYoff": 30,
+	"scoreFont": "38px Helvetica, sans",
+	"positionYoff": 51,
+	"positionFont": "20px Helvetica, sans",
+	"percentileYoff": 67,
+	"percentileFont": "18px Helvetica, sans",
+
+	"link": {
+		"x": 5,
+		"y": 594,
+		"font": "18px Arial",
+		"colour": "#FFFFFF"
+	}
+}
