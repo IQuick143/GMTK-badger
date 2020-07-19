@@ -12,7 +12,7 @@
 	},
 
 	"gameName": {
-		"x": 276,
+		"x": 270,
 		"y": 90,
 		"font": "37px Arial",
 		"align": "left",
@@ -24,6 +24,7 @@
 	"ratingBarWidth": 285,
 	"ratingBarHeight": 74,
 	"ratingBars": [222, 306, 391, 475],
+	"categoryNames": ["Design", "Originality", "Adherence to the Theme"],
 
 	"dataX": 569,
 	"statcolour": "#FFFFFF",

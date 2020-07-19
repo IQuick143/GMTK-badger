@@ -109,7 +109,7 @@ function clearCanvas() {
 
 function makeBadge(gameID) {
 	clearCanvas();
-	var ratings = getRatings(gameID, ["Design", "Originality", "Adherence to the Theme"]);
+	var ratings = getRatings(gameID, design.categoryNames);
 	for (var i = 0; i < design.ratingBars.length; i++) {
 		canvas.drawImage(gradientImg, design.ratingBarStart, design.ratingBars[i], design.ratingBarWidth * ratings[i].scoreNorm, design.ratingBarHeight);
 	}

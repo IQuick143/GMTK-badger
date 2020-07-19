@@ -24,6 +24,7 @@
 	"ratingBarWidth": 174,
 	"ratingBarHeight": 40,
 	"ratingBars": [157, 207, 257, 307],
+	"categoryNames": ["Design", "Originality", "Adherence to the Theme"],
 
 	"dataX": 323,
 	"statcolour": "#FFFFFF",
